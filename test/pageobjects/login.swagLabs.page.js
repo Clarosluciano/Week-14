@@ -19,6 +19,9 @@ class SwagLabsLogin {
         await this.setPassword(password);
         await this.btnLogin.click();
     };
+    open() {
+        return browser.url('https://www.saucedemo.com');
+    }
 };
 
 export default new SwagLabsLogin();
