@@ -12,7 +12,7 @@ class CheckoutStepOnePage {
     async setFirstName(firstName) {
         await this.firstName.setValue(firstName);
     };
-    async setLasttName(lastName) {
+    async setLastName(lastName) {
         await this.lastName.setValue(lastName);
     };
     async setZipCode(zipCode) {
@@ -22,7 +22,16 @@ class CheckoutStepOnePage {
     //Methods
     async completeForm(firstName, lastName, zipCode) {
         await this.setFirstName(firstName);
-        await this.setLasttName(lastName);
+        await this.setLastName(lastName);
+        await this.setZipCode(zipCode);
+        await this.continue.click();
+    }
+    async validationsCheck(firstName,lastName, zipCode) {
+        await this.continue.click();
+        await this.setFirstName(firstName);
+        await this.continue.click();
+        await this.setLastName(lastName);
+        await this.continue.click();
         await this.setZipCode(zipCode);
         await this.continue.click();
     }

@@ -1,6 +1,20 @@
 class InventoryPage {
     //Getters
+    get logo() {return $('.app_logo')};
+    get products() {return $('#header_container > div.header_secondary_container > span')};
+    get headerImg() {return $('#header_container > div.header_secondary_container > div.peek')};
     get buttonCart() {return $('#shopping_cart_container > a')};
+    get productSortBtn() {return $('.product_sort_container')};
+    get sortAz() {return $('[value="az"]')};
+    get sortZa() {return $('[value="za"]')};
+    get sortLohi() {return $('[value="lohi"]')};
+    get sortHilo() {return $('[value="hilo"]')};
+    get burgerMenu() {return $('#react-burger-menu-btn')};
+    get crossBtn() {return $('#react-burger-cross-btn')};
+    get allItemsBtn() {return $('#inventory_sidebar_link')};
+    get aboutBtn() {return $('#about_sidebar_link')};
+    get logoutBtn() {return $('#logout_sidebar_link')};
+    get resetBtn() {return $('#reset_sidebar_link')};
 
     get backpackImg() {return $('#item_4_img_link')};
     get backpackTitle() {return $('#item_4_title_link')};
@@ -35,8 +49,8 @@ class InventoryPage {
     get twitterIcon() {return $('#page_wrapper > footer > ul > li.social_twitter > a')};
     get facebookIcon() {return $('#page_wrapper > footer > ul > li.social_facebook > a')};
     get linkedInIcon() {return $('#page_wrapper > footer > ul > li.social_linkedin > a')};
-
-    //Setters
+    get footerImg() {return $('#page_wrapper > footer > img')};
+    get footerCopy() {return $('#page_wrapper > footer > div')}
 
     //Methods
     async addAll() {
@@ -55,6 +69,51 @@ class InventoryPage {
         await this.fleeceJacketRemove.click();
         await this.onesieRemove.click();
         await this.redTshirtRemove.click();
+    };
+
+    async productSorter() {
+        await this.productSortBtn.click();
+        await this.sortAz.click();
+        await this.productSortBtn.click();
+        await this.sortZa.click();
+        await this.productSortBtn.click();
+        await this.sortLohi.click();
+        await this.productSortBtn.click();
+        await this.sortHilo.click();
+    };
+
+    async headerChecker() {
+        await this.burgerMenu.click();
+        await browser.pause(1000);
+        await this.allItemsBtn.click();
+        await this.aboutBtn.click();
+        await browser.back();
+        await this.burgerMenu.click();
+        await browser.pause(1000);
+        await this.resetBtn.click();
+        await this.crossBtn.click();
+        await this.logo.isDisplayed();
+        await this.buttonCart.isDisplayed();
+        await expect(this.products).toHaveText('PRODUCTS');
+        await this.headerImg.isDisplayed();
+        await this.productSortBtn.isDisplayed();
+    };
+
+    async footerChecker() {
+        await this.footerCopy.isDisplayed();
+        await this.footerImg.isDisplayed();
+        await this.twitterIcon.click();
+        await browser.navigateTo('https://www.saucedemo.com/inventory.html');
+        await this.facebookIcon.click();
+        await browser.navigateTo('https://www.saucedemo.com/inventory.html');
+        await this.linkedInIcon.click();
+        await browser.navigateTo('https://www.saucedemo.com/inventory.html');
+    };
+
+    async logout() {
+        await this.burgerMenu.click();
+        await browser.pause(1000);
+        await this.logoutBtn.click();
     };
 };
 

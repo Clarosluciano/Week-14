@@ -3,6 +3,7 @@ import SwagLabsLogin from '../pageobjects/login.swagLabs.page'
 describe('Login page 1', ()=> {
     it('Login with standard user', async ()=> {
       await SwagLabsLogin.open();
+      await SwagLabsLogin.loginImg.isDisplayed();
       await SwagLabsLogin.Login('standard_user', 'secret_sauce');
     });
 });

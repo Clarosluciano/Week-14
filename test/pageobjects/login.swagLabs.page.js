@@ -4,6 +4,7 @@ class SwagLabsLogin {
     get inputUsername() {return $('#user-name')};
     get inputPassword() {return $('#password')};
     get btnLogin() {return $('#login-button')};
+    get loginImg() {return $('.bot_column')};
 
     //Setters
     async setUsername(username){
